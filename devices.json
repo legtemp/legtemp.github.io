@@ -1,0 +1,82 @@
+[
+    {
+        "name": "POCO F3",
+        "codename": "alioth",
+        "status": "Official",
+        "maintainer": "Raj Kale",
+        "lastUpdated": "Oct 2026",
+        "downloadLink": "www.google.com"
+    },
+    {
+        "name": "Redmi Note 10 Pro",
+        "codename": "sweet",
+        "status": "Official",
+        "maintainer": "Developer 1",
+        "lastUpdated": "Oct 2026",
+        "downloadLink": "www.google.com"
+    },
+    {
+        "name": "POCO X3 NFC",
+        "codename": "surya",
+        "status": "Official",
+        "maintainer": "Developer 2",
+        "lastUpdated": "Oct 2026",
+        "downloadLink": "www.google.com"
+    },
+   {
+        "name": "POCO X3 NFC",
+        "codename": "surya",
+        "status": "Official",
+        "maintainer": "Developer 2",
+        "lastUpdated": "Oct 2026",
+        "downloadLink": "www.google.com"
+    },
+   {
+        "name": "POCO X3 NFC",
+        "codename": "surya",
+        "status": "Official",
+        "maintainer": "Developer 2",
+        "lastUpdated": "Oct 2026",
+        "downloadLink": "www.google.com"
+    },
+   {
+        "name": "POCO X3 NFC",
+        "codename": "surya",
+        "status": "Official",
+        "maintainer": "Developer 2",
+        "lastUpdated": "Oct 2026",
+        "downloadLink": "www.google.com"
+    },
+   {
+        "name": "POCO X3 NFC",
+        "codename": "surya",
+        "status": "Official",
+        "maintainer": "Developer 2",
+        "lastUpdated": "Oct 2026",
+        "downloadLink": "www.google.com"
+    },
+   {
+        "name": "POCO X3 NFC",
+        "codename": "surya",
+        "status": "Official",
+        "maintainer": "Developer 2",
+        "lastUpdated": "Oct 2026",
+        "downloadLink": "www.google.com"
+    },
+   {
+        "name": "POCO X3 NFC",
+        "codename": "surya",
+        "status": "Official",
+        "maintainer": "Developer 2",
+        "lastUpdated": "Oct 2026",
+        "downloadLink": "www.google.com"
+    },
+    {
+        "name": "OnePlus 9R",
+        "codename": "lemonade",
+        "status": "Official",
+        "maintainer": "Maintainer 3",
+        "lastUpdated": "Oct 2026",
+        "downloadLink": "www.google.com"
+    }
+]
