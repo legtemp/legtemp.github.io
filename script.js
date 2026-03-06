@@ -96,10 +96,10 @@ attachMouseGlow(staticCards);
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('.glass-nav');
     if (window.scrollY > 50) {
-        nav.style.background = "rgba(5, 5, 5, 0.9)";
+        nav.classList.add('nav-scrolled');
         nav.style.padding = "10px 0";
     } else {
-        nav.style.background = "rgba(5, 5, 5, 0.6)";
+        nav.classList.remove('nav-scrolled');
         nav.style.padding = "20px 0";
     }
 });
@@ -128,8 +128,8 @@ if (deviceListContainer) {
                         <div class="content position-relative z-1">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <div>
-                                    <h4 class="mb-1 fw-bold">${device.name}</h4>
-                                    <span class="badge bg-darker border border-secondary text-secondary">${device.codename}</span>
+                                    <h4 class="mb-1 theme-text">${device.name}</h4>
+                                    <span class="badge bg-darker border border-secondary theme-text">${device.codename}</span>
                                 </div>
                                 ${statusHtml}
                             </div>
@@ -191,3 +191,4 @@ function setupSearchFilter() {
         ScrollTrigger.refresh();
     });
 }
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -13,14 +13,15 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav">
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">LEGION<span>OS</span></a>
             <div class="ms-auto d-flex align-items-center">
-                <a href="index.html" class="nav-link text-white me-4 d-none d-md-block">Home</a>
-                <a href="index.html#screenshots" class="nav-link text-white me-4 d-none d-md-block">Screenshots</a>
-                <a href="index.html#features" class="nav-link text-white me-4 d-none d-md-block">Features</a>
-                <a href="index.html#team" class="nav-link text-white me-4 d-none d-md-block">Team</a>
+                <a href="index.html" class="nav-link me-4 d-none d-md-block theme-text">Home</a>
+                <a href="index.html#screenshots" class="nav-link me-4 d-none d-md-block theme-text">Screenshots</a>
+                <a href="index.html#features" class="nav-link me-4 d-none d-md-block theme-text">Features</a>
+                <a href="index.html#team" class="nav-link me-4 d-none d-md-block theme-text">Team</a>
+                <a href="blog.html" class="nav-link me-4 d-none d-md-block theme-text active">Blog</a>
                 <a href="download.html" class="btn btn-primary rounded-pill px-4">Download</a>
             </div>
         </div>
@@ -190,7 +191,7 @@
                                             </svg>
                                             <small>${formattedDate}</small>
                                         </div>
-                                        <h4 class="fw-bold text-white mb-2">${blog.title}</h4>
+                                        <h4 class="fw-bold theme-text mb-2">${blog.title}</h4>
                                         <p class="text-secondary mb-0" style="font-size: 0.95rem;">${blog.subtitle}</p>
                                     </div>
                                 </a>
