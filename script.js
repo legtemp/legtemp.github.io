@@ -192,3 +192,69 @@ function setupSearchFilter() {
     });
 }
 
+// 5. Center Focus Gallery Effect (Simpler, cleaner)
+const screenshots = document.querySelectorAll('.marquee-content img');
+
+if (screenshots.length > 0) {
+    // Scroll to the middle of the gallery on page load
+    window.addEventListener('load', () => {
+        const marqueeContainer = document.querySelector('.marquee-content');
+        if (marqueeContainer && screenshots.length > 2) {
+            const middleIndex = Math.floor(screenshots.length / 2);
+            // Instantly snap to the middle screenshot on load
+            screenshots[middleIndex].scrollIntoView({ inline: 'center' });
+        }
+    });
+
+    const updateGalleryFocus = () => {
+        const centerX = window.innerWidth / 2;
+
+        screenshots.forEach(img => {
+            const rect = img.getBoundingClientRect();
+
+            // Optimization: skip if completely off-screen
+            if (rect.right < 0 || rect.left > window.innerWidth) {
+                img.style.transform = `scale(0.85)`;
+                img.style.opacity = "0.4";
+                return;
+            }
+
+            const imgCenterX = rect.left + rect.width / 2;
+            const distance = Math.abs(centerX - imgCenterX);
+
+            // Controls how wide the 'focus' area is before falling off completely
+            const maxDistance = window.innerWidth / 1.5;
+
+            // Calculate scale: 1.1 at center, 0.85 at edges
+            let scale = 1.1 - (distance / maxDistance) * 0.25;
+            scale = Math.max(0.85, Math.min(1.1, scale));
+
+            // Calculate opacity: 1 at center, 0.4 at edges
+            let opacity = 1 - (distance / maxDistance) * 0.6;
+            opacity = Math.max(0.4, Math.min(1, opacity));
+
+            // Calculate blur: 0px at center, 8px at edges
+            let blur = (distance / maxDistance) * 8;
+            blur = Math.max(0, Math.min(8, blur));
+
+            // Apply transform dynamically without triggering transition stutters
+            img.style.transform = `scale(${scale})`;
+            img.style.opacity = opacity;
+            img.style.filter = `blur(${blur}px)`;
+        });
+
+        requestAnimationFrame(updateGalleryFocus);
+    };
+
+    // Add click to focus functionality
+    screenshots.forEach(img => {
+        // Set cursor to pointer so users know it's clickable
+        img.style.cursor = "pointer";
+        img.addEventListener('click', () => {
+            img.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        });
+    });
+
+    // Start animation loop
+    updateGalleryFocus();
+}
