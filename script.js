@@ -134,7 +134,7 @@ if (deviceListContainer) {
                                 ${statusHtml}
                             </div>
                             <p class="text-secondary small mb-4">Maintainer: ${device.maintainer}<br>Last Updated: ${device.lastUpdated}</p>
-                            <a href="${device.downloadLink}" class="btn btn-outline-light w-100 rounded-pill">Download ROM</a>
+                            <button onclick="openDownloadModal('${device.name}', '${device.codename}', '${device.downloadLink}')" class="btn btn-outline-light w-100 rounded-pill">Get Builds</button>
                         </div>
                     </div>
                 </div>`;
@@ -190,6 +190,55 @@ function setupSearchFilter() {
 
         ScrollTrigger.refresh();
     });
+}
+
+// Download Modal Logic
+function openDownloadModal(name, codename, link) {
+    const modalDeviceName = document.getElementById('modalDeviceName');
+    const btnGapps = document.getElementById('btnGapps');
+    const btnVanilla = document.getElementById('btnVanilla');
+    const btnChangelogGapps = document.getElementById('btnChangelogGapps');
+    const btnChangelogVanilla = document.getElementById('btnChangelogVanilla');
+
+    if (modalDeviceName && btnGapps) {
+        modalDeviceName.textContent = codename.toUpperCase();
+
+        btnGapps.href = link + "?build=gapps";
+        btnVanilla.href = link + "?build=vanilla";
+
+        btnChangelogGapps.onclick = () => loadChangelog(name, codename, 'gapps');
+        btnChangelogVanilla.onclick = () => loadChangelog(name, codename, 'vanilla');
+
+        const downloadModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('downloadModal'));
+        downloadModal.show();
+    }
+}
+
+function loadChangelog(name, codename, type) {
+    const changelogDeviceName = document.getElementById('changelogDeviceName');
+    const changelogContent = document.getElementById('changelogContent');
+    const changelogLoading = document.getElementById('changelogLoading');
+
+    changelogDeviceName.textContent = `${codename.toUpperCase()} (${type.toUpperCase()})`;
+    changelogContent.classList.add('d-none');
+    changelogLoading.classList.remove('d-none');
+
+    // Fetch changelog text
+    fetch(`changelog_${codename}-${type}.txt`)
+        .then(response => {
+            if (!response.ok) throw new Error('Not found');
+            return response.text();
+        })
+        .then(text => {
+            changelogContent.textContent = text;
+            changelogLoading.classList.add('d-none');
+            changelogContent.classList.remove('d-none');
+        })
+        .catch(err => {
+            changelogContent.textContent = `Error: Changelog file for ${codename} (${type}) could not be found.\n\nPlease ensure 'changelog_${codename}-${type}.txt' is available in the root directory.`;
+            changelogLoading.classList.add('d-none');
+            changelogContent.classList.remove('d-none');
+        });
 }
 
 // 5. Center Focus Gallery Effect (Simpler, cleaner)
