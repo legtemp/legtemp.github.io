@@ -110,7 +110,7 @@ const searchInput = document.getElementById("deviceSearch");
 const noResults = document.getElementById("noResults");
 
 if (deviceListContainer) {
-    fetch('devices.json')
+    fetch('https://raw.githubusercontent.com/legtemp/ota/refs/heads/main/devices.json')
         .then(response => response.json())
         .then(devices => {
             deviceListContainer.innerHTML = ''; // Clear loading content
@@ -224,7 +224,9 @@ function loadChangelog(name, codename, type) {
     changelogLoading.classList.remove('d-none');
 
     // Fetch changelog text
-    fetch(`changelog_${codename}-${type}.txt`)
+    const fetchUrl = `https://raw.githubusercontent.com/legtemp/ota/refs/heads/main/changelogs/changelog_${codename}-${type}.txt`;
+
+    fetch(fetchUrl)
         .then(response => {
             if (!response.ok) throw new Error('Not found');
             return response.text();

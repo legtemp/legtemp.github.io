@@ -96,7 +96,7 @@
                 // Ensure we fetch from the external GitHub repo if it's just a filename
                 const fetchUrl = postFile.startsWith('http')
                     ? postFile
-                    : `https://raw.githubusercontent.com/legtemp/Qwe/refs/heads/main/${postFile}`;
+                    : `https://raw.githubusercontent.com/legtemp/blogposts/refs/heads/main/${postFile}`;
 
                 fetch(fetchUrl)
                     .then(response => {
@@ -137,7 +137,7 @@
                 gsap.to(filterContainer, { duration: 0.8, opacity: 1, y: 0, ease: "power2.out" });
                 let allBlogs = [];
 
-                fetch('https://raw.githubusercontent.com/legtemp/Qwe/refs/heads/main/blogs.json')
+                fetch('https://raw.githubusercontent.com/legtemp/blogposts/refs/heads/main/blogs.json')
                     .then(response => response.json())
                     .then(blogs => {
                         allBlogs = blogs;
