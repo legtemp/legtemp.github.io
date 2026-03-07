@@ -247,13 +247,15 @@ function loadChangelog(name, codename, type) {
 const screenshots = document.querySelectorAll('.marquee-content img');
 
 if (screenshots.length > 0) {
-    // Scroll to the middle of the gallery on page load
+    // Scroll to the middle of the gallery on page load without jumping the main window vertically
     window.addEventListener('load', () => {
-        const marqueeContainer = document.querySelector('.marquee-content');
-        if (marqueeContainer && screenshots.length > 2) {
+        const marqueeContent = document.querySelector('.marquee-content');
+        if (marqueeContent && screenshots.length > 2) {
             const middleIndex = Math.floor(screenshots.length / 2);
-            // Instantly snap to the middle screenshot on load
-            screenshots[middleIndex].scrollIntoView({ inline: 'center' });
+            const targetImg = screenshots[middleIndex];
+            // Instantly snap horizontally to the middle screenshot
+            const centerPos = targetImg.offsetLeft - (marqueeContent.clientWidth / 2) + (targetImg.clientWidth / 2);
+            marqueeContent.scrollTo({ left: centerPos, behavior: 'instant' });
         }
     });
 
@@ -297,15 +299,42 @@ if (screenshots.length > 0) {
         requestAnimationFrame(updateGalleryFocus);
     };
 
-    // Add click to focus functionality
+    // Add click to focus functionality without vertical jumping
     screenshots.forEach(img => {
         // Set cursor to pointer so users know it's clickable
         img.style.cursor = "pointer";
         img.addEventListener('click', () => {
-            img.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            const marqueeContent = document.querySelector('.marquee-content');
+            if (marqueeContent) {
+                const centerPos = img.offsetLeft - (marqueeContent.clientWidth / 2) + (img.clientWidth / 2);
+                marqueeContent.scrollTo({ left: centerPos, behavior: 'smooth' });
+            }
         });
     });
 
     // Start animation loop
     updateGalleryFocus();
 }
+
+// 6. Scroll to Top Button Logic
+document.addEventListener("DOMContentLoaded", () => {
+    // Inject the button
+    const scrollBtn = document.createElement("div");
+    scrollBtn.id = "scrollTopBtn";
+    scrollBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/></svg>`;
+    document.body.appendChild(scrollBtn);
+
+    // Scroll listener for visibility
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 400) {
+            scrollBtn.classList.add("show");
+        } else {
+            scrollBtn.classList.remove("show");
+        }
+    });
+
+    // Click listener to scroll to top
+    scrollBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+});
