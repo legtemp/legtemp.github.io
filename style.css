@@ -621,3 +621,29 @@ body {
         padding-bottom: 2rem;
     }
 }
+
+/* Contact Form Input Styling */
+.custom-input {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-medium);
+    color: var(--text-main);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.custom-input:focus {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(139, 92, 246, 0.25);
+    color: var(--text-main);
+}
+
+.custom-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+select.custom-input option {
+    background-color: var(--bg);
+    color: var(--text-main);
+}
