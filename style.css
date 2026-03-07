@@ -112,8 +112,8 @@ body {
 /* Glassmorphic Hero Card */
 .hero-glass-card {
     background: rgba(10, 3, 28, 0.4);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(139, 92, 246, 0.3);
     border-radius: 30px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
@@ -121,6 +121,8 @@ body {
     max-width: 800px;
     position: relative;
     overflow: hidden;
+    transform: translateZ(0);
+    /* Hardware acceleration */
 }
 
 .hero-glass-card::before {
@@ -131,9 +133,12 @@ body {
     width: 200%;
     height: 200%;
     background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
-    animation: rotateGlow 15s linear infinite;
+    animation: rotateGlow 20s linear infinite;
+    /* Slowed down slightly */
     pointer-events: none;
     z-index: 0;
+    will-change: transform;
+    /* Hardware acceleration for animation */
 }
 
 @keyframes rotateGlow {
@@ -691,28 +696,35 @@ body {
 
 /* Contact Form Input Styling */
 .custom-input {
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border-medium);
-    color: var(--text-main);
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid var(--border-medium) !important;
+    color: #ffffff !important;
     border-radius: 8px;
     padding: 0.75rem 1rem;
     transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 .custom-input:focus {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-color: var(--primary);
-    box-shadow: 0 0 0 0.25rem rgba(139, 92, 246, 0.25);
-    color: var(--text-main);
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 0.25rem rgba(139, 92, 246, 0.25) !important;
+    color: #ffffff !important;
 }
 
-.custom-input::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+.custom-input::placeholder,
+.custom-input::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: 400;
+}
+
+select.custom-input {
+    color: #ffffff !important;
 }
 
 select.custom-input option {
-    background-color: var(--bg);
-    color: var(--text-main);
+    background-color: var(--bg-darker);
+    color: #ffffff;
 }
 
 @media (max-width: 768px) {

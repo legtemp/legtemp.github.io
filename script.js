@@ -346,26 +346,22 @@ document.addEventListener("DOMContentLoaded", () => {
             "particles": {
                 "number": {
                     "value": 80,
-                    "density": { "enable": true, "value_area": 800 }
+                    "density": { "enable": true, "value_area": 1000 }
                 },
                 "color": { "value": "#8E2DE2" },
                 "shape": { "type": "circle" },
                 "opacity": {
-                    "value": 0.5,
+                    "value": 0.4,
                     "random": false,
                     "anim": { "enable": false }
                 },
                 "size": {
-                    "value": 3,
+                    "value": 2,
                     "random": true,
                     "anim": { "enable": false }
                 },
                 "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#8E2DE2",
-                    "opacity": 0.3,
-                    "width": 1
+                    "enable": false
                 },
                 "move": {
                     "enable": true,
