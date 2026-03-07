@@ -92,6 +92,58 @@ body {
     height: 100vh;
     background: radial-gradient(circle at center top, var(--glow-primary-subtle) 0%, var(--bg) 80%);
     position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* Glassmorphic Hero Card */
+.hero-glass-card {
+    background: rgba(10, 3, 28, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 30px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(139, 92, 246, 0.1);
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-glass-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+    animation: rotateGlow 15s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes rotateGlow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .hero-title {
@@ -100,11 +152,6 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0px 4px 20px var(--marquee-shadow);
-    opacity: 0;
-    transform: translateY(40px);
-}
-
-.hero-title {
     opacity: 0;
     transform: translateY(40px);
 }
@@ -597,7 +644,7 @@ body {
 /* Stylish Section Titles Underline */
 .section-title {
     position: relative;
-    padding-bottom: 15px;
+    padding-bottom: 25px;
 }
 
 .section-title::after {
@@ -666,4 +713,11 @@ body {
 select.custom-input option {
     background-color: var(--bg);
     color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+    .hero-glass-card {
+        padding: 2rem !important;
+        margin: 0 1rem;
+    }
 }

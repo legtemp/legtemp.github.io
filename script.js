@@ -338,3 +338,60 @@ document.addEventListener("DOMContentLoaded", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 });
+
+// 7. Particles.js Initialization for Hero Section
+document.addEventListener("DOMContentLoaded", () => {
+    if (document.getElementById("particles-js")) {
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": { "enable": true, "value_area": 800 }
+                },
+                "color": { "value": "#8E2DE2" },
+                "shape": { "type": "circle" },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": { "enable": false }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": { "enable": false }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#8E2DE2",
+                    "opacity": 0.3,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": { "enable": false }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 0.8 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
+    }
+});
+
