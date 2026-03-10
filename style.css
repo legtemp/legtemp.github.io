@@ -30,6 +30,11 @@
     --input-placeholder: rgba(255, 255, 255, 0.4);
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
 body {
     background-color: var(--bg);
     color: var(--text-main);
@@ -50,6 +55,32 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    z-index: 10000;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 0 10px var(--shadow-primary);
 }
 
 .theme-text {
@@ -123,6 +154,7 @@ body {
     overflow: hidden;
     transform: translateZ(0);
     /* Hardware acceleration */
+    animation: float 6s ease-in-out infinite;
 }
 
 .hero-glass-card::before {
@@ -266,13 +298,13 @@ body {
     border-radius: 32px;
     border: 1px solid var(--border-medium);
     overflow: hidden;
-    transition: 0.3s;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.1s ease-out;
 }
 
 .feature-card:hover {
     border-color: var(--glow-primary-medium);
-    transform: translateY(-8px) scale(1.02);
     box-shadow: 0 15px 40px var(--glow-primary-subtle);
+    z-index: 10;
 }
 
 .feature-card .glow {
@@ -731,5 +763,16 @@ select.custom-input option {
     .hero-glass-card {
         padding: 2rem !important;
         margin: 0 1rem;
+    }
+}
+
+/* Offcanvas Desktop Override */
+@media (min-width: 992px) {
+    .offcanvas.glass-modal {
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: none !important;
+        box-shadow: none !important;
     }
 }

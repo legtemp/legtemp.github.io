@@ -26,20 +26,46 @@
 </head>
 
 <body>
+    <div class="scroll-progress"></div>
 
     <nav class="navbar navbar-expand-lg fixed-top glass-nav">
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
                 <img src="img/navbar-logo.png" alt="L" class="brand-logo">
             </a>
-            <div class="ms-auto d-flex align-items-center">
-                <a href="index.html" class="nav-link me-4 d-none d-md-block theme-text">Home</a>
-                <a href="index.html#features" class="nav-link me-4 d-none d-md-block theme-text">Features</a>
-                <a href="index.html#screenshots" class="nav-link me-4 d-none d-md-block theme-text">Screenshots</a>
-                <a href="index.html#team" class="nav-link me-4 d-none d-md-block theme-text">Team</a>
-                <a href="index.html#contact" class="nav-link me-4 d-none d-md-block theme-text">Contact</a>
-                <a href="blog.html" class="nav-link me-4 d-none d-md-block theme-text">Blog</a>
-                <a href="download.html" class="btn btn-primary rounded-pill px-4">Download</a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler border-0 shadow-none d-lg-none" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="var(--text-main)"
+                    class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </button>
+
+            <!-- Offcanvas Sidebar Menu -->
+            <div class="offcanvas offcanvas-end glass-modal d-lg-flex flex-lg-row w-auto" tabindex="-1"
+                id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="width: 300px;">
+                <div class="offcanvas-header border-bottom border-subtle d-lg-none">
+                    <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">LegionOS Menu</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body d-flex flex-column flex-lg-row align-items-lg-center ms-auto">
+                    <a href="index.html" class="nav-link mb-3 mb-lg-0 me-lg-4 theme-text fw-bold">Home</a>
+                    <a href="index.html#features" class="nav-link mb-3 mb-lg-0 me-lg-4 theme-text fw-bold"
+                        data-bs-dismiss="offcanvas">Features</a>
+                    <a href="index.html#screenshots" class="nav-link mb-3 mb-lg-0 me-lg-4 theme-text fw-bold"
+                        data-bs-dismiss="offcanvas">Screenshots</a>
+                    <a href="index.html#team" class="nav-link mb-3 mb-lg-0 me-lg-4 theme-text fw-bold"
+                        data-bs-dismiss="offcanvas">Team</a>
+                    <a href="index.html#contact" class="nav-link mb-3 mb-lg-0 me-lg-4 theme-text fw-bold"
+                        data-bs-dismiss="offcanvas">Contact</a>
+                    <a href="blog.html" class="nav-link mb-4 mb-lg-0 me-lg-4 theme-text fw-bold">Blog</a>
+                    <a href="download.html"
+                        class="btn btn-primary rounded-pill px-4 mt-auto mt-lg-0 w-100 w-lg-auto">Download</a>
+                </div>
             </div>
         </div>
     </nav>

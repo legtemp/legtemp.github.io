@@ -75,15 +75,58 @@ gsap.to(".team-wrapper", {
     ease: "back.out(2)"
 });
 
-// Mouse Glow Helper Function
+// 3.1 Extra Section Revealing Animations
+gsap.utils.toArray('.section-title').forEach(title => {
+    gsap.from(title, {
+        scrollTrigger: { trigger: title, start: "top 85%" },
+        y: 30, opacity: 0, duration: 1, ease: "power3.out"
+    });
+});
+
+if (document.querySelector(".marquee-container")) {
+    gsap.from(".marquee-container", {
+        scrollTrigger: { trigger: "#screenshots", start: "top 75%" },
+        y: 50, opacity: 0, duration: 1.2, ease: "power4.out"
+    });
+}
+
+if (document.querySelector("#contact .feature-card")) {
+    gsap.from("#contact .feature-card", {
+        scrollTrigger: { trigger: "#contact", start: "top 80%" },
+        y: 40, opacity: 0, duration: 1.2, ease: "power3.out"
+    });
+}
+
+// Mouse Glow & 3D Tilt Helper Function
 function attachMouseGlow(cards) {
     cards.forEach(card => {
         card.addEventListener("mousemove", e => {
             const rect = card.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / card.clientWidth) * 100;
-            const y = ((e.clientY - rect.top) / card.clientHeight) * 100;
-            card.style.setProperty("--mouse-x", `${x}%`);
-            card.style.setProperty("--mouse-y", `${y}%`);
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Glow positioning
+            const xPct = (x / card.clientWidth) * 100;
+            const yPct = (y / card.clientHeight) * 100;
+            card.style.setProperty("--mouse-x", `${xPct}%`);
+            card.style.setProperty("--mouse-y", `${yPct}%`);
+
+            // 3D Tilt Effect
+            const centerX = card.clientWidth / 2;
+            const centerY = card.clientHeight / 2;
+            const rotateX = ((y - centerY) / centerY) * -8; // Max 8 degrees vertical tilt
+            const rotateY = ((x - centerX) / centerX) * 8;  // Max 8 degrees horizontal tilt
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+            // Reset transforms elegantly
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+
+            // Move glow out of sight slightly slower
+            card.style.setProperty("--mouse-x", `-200%`);
+            card.style.setProperty("--mouse-y", `-200%`);
         });
     });
 }
@@ -92,7 +135,7 @@ function attachMouseGlow(cards) {
 const staticCards = document.querySelectorAll(".feature-card");
 attachMouseGlow(staticCards);
 
-// Navbar Scroll Effect
+// Navbar & Scroll Progress Effect
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('.glass-nav');
     if (window.scrollY > 50) {
@@ -102,6 +145,41 @@ window.addEventListener('scroll', () => {
         nav.classList.remove('nav-scrolled');
         nav.style.padding = "20px 0";
     }
+
+    // Scroll Progress logic
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    const progressBar = document.querySelector(".scroll-progress");
+    if (progressBar) {
+        progressBar.style.width = scrolled + "%";
+    }
+});
+
+// Premium Magnetic Buttons
+const magneticButtons = document.querySelectorAll('.btn-primary, .btn-outline-light');
+magneticButtons.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        gsap.to(btn, {
+            duration: 0.3,
+            x: x * 0.3, /* Pull constraints */
+            y: y * 0.3,
+            ease: "power2.out"
+        });
+    });
+
+    btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, {
+            duration: 0.5,
+            x: 0,
+            y: 0,
+            ease: "elastic.out(1, 0.3)" /* Snap back bouncy effect */
+        });
+    });
 });
 
 // Dynamic Device Loading & Filtering
