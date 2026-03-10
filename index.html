@@ -45,24 +45,24 @@
             </button>
 
             <!-- Offcanvas Sidebar Menu -->
-            <div class="offcanvas offcanvas-end glass-modal d-lg-flex flex-lg-row w-auto" tabindex="-1"
-                id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="width: 300px;">
+            <div class="offcanvas-lg offcanvas-end offcanvas-glass" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header border-bottom border-subtle d-lg-none">
                     <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">LegionOS Menu</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                        aria-label="Close"></button>
+                        data-bs-target="#offcanvasNavbar" aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body d-flex flex-column flex-lg-row align-items-lg-center ms-auto">
-                    <a href="index.html" class="nav-link mb-3 mb-lg-0 me-lg-4 theme-text fw-bold">Home</a>
-                    <a href="index.html#features" class="nav-link mb-3 mb-lg-0 me-lg-4 theme-text fw-bold"
-                        data-bs-dismiss="offcanvas">Features</a>
-                    <a href="index.html#screenshots" class="nav-link mb-3 mb-lg-0 me-lg-4 theme-text fw-bold"
-                        data-bs-dismiss="offcanvas">Screenshots</a>
-                    <a href="index.html#team" class="nav-link mb-3 mb-lg-0 me-lg-4 theme-text fw-bold"
-                        data-bs-dismiss="offcanvas">Team</a>
-                    <a href="index.html#contact" class="nav-link mb-3 mb-lg-0 me-lg-4 theme-text fw-bold"
-                        data-bs-dismiss="offcanvas">Contact</a>
-                    <a href="blog.html" class="nav-link mb-4 mb-lg-0 me-lg-4 theme-text fw-bold">Blog</a>
+                <div class="offcanvas-body d-flex flex-column flex-lg-row align-items-lg-center ms-auto p-4 p-lg-0">
+                    <a href="index.html" class="nav-link mb-4 mb-lg-0 me-lg-4 theme-text fw-bold">Home</a>
+                    <a href="index.html#features" class="nav-link mb-4 mb-lg-0 me-lg-4 theme-text fw-bold"
+                        data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar">Features</a>
+                    <a href="index.html#screenshots" class="nav-link mb-4 mb-lg-0 me-lg-4 theme-text fw-bold"
+                        data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar">Screenshots</a>
+                    <a href="index.html#team" class="nav-link mb-4 mb-lg-0 me-lg-4 theme-text fw-bold"
+                        data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar">Team</a>
+                    <a href="index.html#contact" class="nav-link mb-4 mb-lg-0 me-lg-4 theme-text fw-bold"
+                        data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar">Contact</a>
+                    <a href="blog.html" class="nav-link mb-5 mb-lg-0 me-lg-4 theme-text fw-bold">Blog</a>
                     <a href="download.html"
                         class="btn btn-primary rounded-pill px-4 mt-auto mt-lg-0 w-100 w-lg-auto">Download</a>
                 </div>
@@ -275,6 +275,7 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Particles.js Library -->
