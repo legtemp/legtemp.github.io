@@ -135,27 +135,6 @@ function attachMouseGlow(cards) {
 const staticCards = document.querySelectorAll(".feature-card");
 attachMouseGlow(staticCards);
 
-// Custom Mobile Menu Logic
-const mobileToggle = document.querySelector('.mobile-menu-toggle');
-const closeMobileMenu = document.querySelector('.close-mobile-menu');
-const navLinksContainer = document.querySelector('.nav-links-container');
-const navLinks = document.querySelectorAll('.nav-links-container .nav-link, .nav-links-container .btn');
-
-if (mobileToggle && closeMobileMenu && navLinksContainer) {
-    const toggleMenu = () => navLinksContainer.classList.toggle('active');
-
-    mobileToggle.addEventListener('click', toggleMenu);
-    closeMobileMenu.addEventListener('click', () => navLinksContainer.classList.remove('active'));
-
-    // Close menu when a link is clicked
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth < 992) {
-                navLinksContainer.classList.remove('active');
-            }
-        });
-    });
-}
 
 // Navbar & Scroll Progress Effect
 window.addEventListener('scroll', () => {
